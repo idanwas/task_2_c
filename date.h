@@ -13,4 +13,6 @@ void initDate(Date* pDate);
 
 void printDate(Date* date);
 
+void freeDate(Date* pDate);
+
 #endif /* DATE_H_ */

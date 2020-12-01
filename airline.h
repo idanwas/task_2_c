@@ -10,6 +10,9 @@ typedef struct
 	Flight** pFlights;
 }Airline;
 
+
+int initAirline(Airline* pAirline);
+
 int addFlight(Airline* pAirline, Flight* pFlight);
 
 #endif /* AIRLINE_H_ */

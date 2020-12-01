@@ -5,6 +5,54 @@
 #include "flight.h"
 
 
+int initFlight(Flight* pFlight)
+{
+	if(!pFlight)
+		return 0;
+
+	printf("\nPlease enter departure airport of this flight: ");
+	Airport* from = (Airport*)malloc(sizeof(Airport));
+	initAirport(from);
+
+	getchar();
+
+	printf("\nPlease enter arrival airport of this flight: ");
+	Airport* to = (Airport*)malloc(sizeof(Airport));
+	initAirport(to);
+
+	getchar();
+
+	printf("\nPlease enter the hour of this flight (0-23): ");
+	scanf("%d", &pFlight->hour);
+	if(pFlight->hour > 23)
+		pFlight->hour %= 24;
+
+	Date* date = (Date*)malloc(sizeof(Date));
+	initDate(date);
+
+	return 1;
+}
+
+void printFlight(Flight* pFlight)
+{
+	printf("\nThis flight departures from: ");
+	printAirport(pFlight->pFrom);
+
+	printf("\t and arriving to: ");
+	printAirport(pFlight->pTo);
+
+	// print time and date
+	printf(" print time and date");
+}
+
+void freeFlight(Flight* pFlight)
+{
+	freeDate(pFlight->date);
+	freeAirport(pFlight->pTo);
+	freeAirport(pFlight->pFrom);
+	free(pFlight);
+}
+
 // return 1 if from=flight.from.code AND to=flight.to.code
 int isFlightInLine(Flight flight, const char from[4], const char to[4])
 {

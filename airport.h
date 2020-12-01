@@ -9,7 +9,7 @@ typedef struct
 	char IATA[4];
 }Airport;
 
-void initAirport(Airport* pAir);
+int initAirport(Airport* pAir);
 
 void printAirport(Airport* pAir);
 

@@ -4,20 +4,29 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../airline.c \
 ../airport.c \
 ../airport_manager.c \
+../date.c \
+../flight.c \
 ../functions.c \
 ../main.c 
 
 OBJS += \
+./airline.o \
 ./airport.o \
 ./airport_manager.o \
+./date.o \
+./flight.o \
 ./functions.o \
 ./main.o 
 
 C_DEPS += \
+./airline.d \
 ./airport.d \
 ./airport_manager.d \
+./date.d \
+./flight.d \
 ./functions.d \
 ./main.d 
 

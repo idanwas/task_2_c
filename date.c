@@ -12,6 +12,15 @@ void initDate(Date* pDate)
 		return;
 	}
 
+	printf("\nPlease enter date in this format (dd/mm/yyyy): ");
+
+
+
+
+
+
+
+
 	printf("\nPlease enter a day (1-Sunday,.. 7-Saturday): ");
 	scanf("%d", &pDate->day);
 	if(pDate->day > 7 || pDate->day < 1)
@@ -31,4 +40,11 @@ void initDate(Date* pDate)
 void printDate(Date* pDate)
 {
 	printf("%2d/%2d/%4d", pDate->day, pDate->month, pDate->year);
+}
+
+void freeDate(Date* pDate)
+{
+	if(!pDate)
+		return;
+	free(pDate);
 }

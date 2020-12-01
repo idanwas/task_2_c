@@ -9,9 +9,15 @@ typedef struct
 	Airport* pFrom;
 	Airport* pTo;
 	int hour;
-	Date date;
+	Date* date;
 }Flight;
 
+
+int initFlight(Flight* pFlight);
+
+void printFlight(Flight* pFlight);
+
+void freeFlight(Flight* pFlight);
 
 int isFlightInLine(Flight flight, const char from[4], const char to[4]);
 
