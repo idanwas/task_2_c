@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,6 +13,8 @@ void initAirport(Airport* pAir)
 		printf("\n didn't get a name");
 	pAir->name = (char*)malloc(strlen(name) * sizeof(char));
 	strcpy(pAir->name, name);
+
+	//getchar();
 
 	char* country = getStrExactLength("\nPlease enter country name: ");
 	if(!country)
