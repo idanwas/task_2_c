@@ -48,7 +48,7 @@ void printAirport(Airport* pAirport)
 		return;
 	}
 
-	printf("\nAirport %s, located in %s, IATA code: %s", pAirport->name, pAirport->country, pAirport->IATA);
+	printf("Airport %s, located in %s, IATA code: %s", pAirport->name, pAirport->country, pAirport->IATA);
 }
 
 void freeAirport(Airport* pAirport)

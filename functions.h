@@ -8,5 +8,4 @@ char* myGets(char* buf, size_t size);
 
 char* getStrExactLength(char* msg);
 
-
 #endif /* FUNCTIONS_H_ */

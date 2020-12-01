@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include <string.h>
+#include <string.h>
 
 #include "airline.h"
 #include "flight.h"
+#include "functions.h"
 
 
 int initAirline(Airline* pAirline)
@@ -25,7 +26,12 @@ int initAirline(Airline* pAirline)
 
 void printAirline(Airline* pAirline)
 {
-	printf("\nAirline %s has %d flights: ");
+	printf("\nAirline %s has %d flights: ", pAirline->name, pAirline->count_flights);
+
+}
+
+void freeAirline(Airline* pAirline)
+{
 
 }
 

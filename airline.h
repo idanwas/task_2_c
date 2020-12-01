@@ -13,6 +13,10 @@ typedef struct
 
 int initAirline(Airline* pAirline);
 
+void printAirline(Airline* pAirline);
+
+void freeAirline(Airline* pAirline);
+
 int addFlight(Airline* pAirline, Flight* pFlight);
 
 #endif /* AIRLINE_H_ */

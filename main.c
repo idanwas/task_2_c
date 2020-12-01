@@ -1,27 +1,24 @@
-
 #include <stdio.h>
-#include "airport.h"
+#include <stdlib.h>
+
+#include "airport_manager.h"
+#include "airline.h"
 
 int main()
 {
-	printf("init airport:");
 
-	Airport a;
-	initAirport(&a);
-	printAirport(&a);
+	AirportManager* airportManager = (AirportManager*)malloc(sizeof(AirportManager));
+	initAirportManager(airportManager);
+	printAirportManager(airportManager);
 
-	getchar();
+	Airline* airline = (Airline*)malloc(sizeof(Airline));
+	initAirline(airline);
+	printAirline(airline);
 
-	Airport b;
-	initAirport(&b);
-	printAirport(&b);
 
-	if(isCodeEqualsAirport(&a, "LAX"))
-		printf("same");
 
-	freeAirport(&a);
-	freeAirport(&b);
 
+	freeAirportManager(airportManager);
 
 	return 0;
 }

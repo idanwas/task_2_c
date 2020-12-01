@@ -4,21 +4,51 @@
 
 #include "airport_manager.h"
 
-
-int addAirport(AirportManager* pAirMan, Airport* pAir)
+int initAirportManager(AirportManager* pAirMan)
 {
-	if(!pAir || !pAirMan)
+	if(!pAirMan)
 		return 0;
 
-	pAirMan->count_airports++;
-	int new_count = pAirMan->count_airports;
+	printf("\nPlease enter how many airports for this airport manager: ");
+	scanf("%d", &pAirMan->count_airports);
 
-	if(new_count == 1)
-		pAirMan->airports = (Airport*)malloc(sizeof(Airport));
-	else
-		pAirMan->airports = (Airport*)realloc(pAirMan->airports, new_count * sizeof(Airport));
+	pAirMan->airports = (Airport*)malloc(pAirMan->count_airports * sizeof(Airport));
 
-	pAirMan->airports[new_count - 1] = *pAir;
+	for(int i = 0; i < pAirMan->count_airports; i++)
+	{
+		while(getchar() != '\n');
+		if(addAirport(pAirMan, i) == 0)
+			printf("wrong");
+	}
+	return 1;
+}
+
+void printAirportManager(AirportManager* pAirMan)
+{
+	printf("\nThis airport manager have %d airports: ", pAirMan->count_airports);
+	for(int i = 0; i < pAirMan->count_airports; i++)
+	{
+		printf("\n#%d ", i+1);
+		printAirport(&pAirMan->airports[i]);
+	}
+}
+
+void freeAirportManager(AirportManager* pAirMan)
+{
+	for(int i = 0; i < pAirMan->count_airports; i++)
+	{
+		freeAirport(&pAirMan->airports[i]);
+	}
+	free(pAirMan);
+}
+
+int addAirport(AirportManager* pAirMan, int index)
+{
+	if(!pAirMan)
+		return 0;
+
+	if(initAirport(&(pAirMan->airports[index])) == 0)
+		return 0;
 
 	return 1;
 }

@@ -5,12 +5,18 @@
 
 typedef struct
 {
-	Airport* airports;
 	int count_airports;
+	Airport* airports;
 }AirportManager;
 
 
-int addAirport(AirportManager* pAirMan, Airport* pAir);
+int initAirportManager(AirportManager* pAirMan);
+
+int addAirport(AirportManager* pAirMan, int index);
+
+void printAirportManager(AirportManager* pAirMan);
+
+void freeAirportManager(AirportManager* pAirMan);
 
 Airport* searchAirportByCode(AirportManager* pAirMan, const char IATA[4]);
 

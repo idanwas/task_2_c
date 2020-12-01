@@ -9,10 +9,12 @@ typedef struct
 }Date;
 
 
-void initDate(Date* pDate);
+int initDate(Date* pDate);
 
 void printDate(Date* date);
 
 void freeDate(Date* pDate);
+
+int getDateValuesFromStr(char* date, int* day, int* month, int* year);
 
 #endif /* DATE_H_ */
