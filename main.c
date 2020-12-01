@@ -1,15 +1,16 @@
-/*
- * main.c
- *
- *  Created on: 1 Dec 2020
- *      Author: afeka
- */
 
 #include <stdio.h>
+#include "airport.h"
 
 int main()
 {
-	printf("task #2 in introduction to C");
+	printf("init airport:");
+
+	Airport a;
+	initAirport(&a);
+	printAirport(&a);
+	freeAirport(&a);
+
 
 	return 0;
 }
