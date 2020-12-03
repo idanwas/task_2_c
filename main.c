@@ -11,12 +11,11 @@ int main()
 	initAirportManager(airportManager);
 	printAirportManager(airportManager);
 
+	while(getchar() != '\n');
+
 	Airline* airline = (Airline*)malloc(sizeof(Airline));
 	initAirline(airline);
 	printAirline(airline);
-
-
-
 
 	freeAirportManager(airportManager);
 

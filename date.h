@@ -17,4 +17,6 @@ void freeDate(Date* pDate);
 
 int getDateValuesFromStr(char* date, int* day, int* month, int* year);
 
+int checkDate(Date* pDate);
+
 #endif /* DATE_H_ */

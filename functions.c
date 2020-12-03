@@ -40,3 +40,14 @@ char* getStrExactLength(char* msg)
 
 	return theStr;
 }
+
+void printMenu()
+{
+	printf("\nMain Menu: (please choose an option)\n"
+			"1)\tAdd a flight to airline"
+			"2)\tAdd an airport to airport manager"
+			"3)\tPrint airline details"
+			"4)\tPrint airport manager details"
+			"5)\tHow many flights in a specific line?"
+			"6)\tExit");
+}
