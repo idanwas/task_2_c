@@ -24,7 +24,6 @@ int initAirport(Airport* pAirport)
 	//
 	//
 
-	//getchar();
 
 	char* country = getStrExactLength("\nPlease enter country name: ");
 	if(!country)
@@ -32,9 +31,10 @@ int initAirport(Airport* pAirport)
 	pAirport->country = (char*)malloc(strlen(country) * sizeof(char));
 	strcpy(pAirport->country, country);
 
+	//strcpy(pAirport->IATA,readIATA("\nPlease enter IATA code: "));
 	printf("\nPlease enter IATA code: ");
 	fgets(pAirport->IATA, 4 , stdin);
-	if(!country)
+	if(!pAirport->IATA)
 		printf("\n didn't get a IATA code");
 
 	return 1;

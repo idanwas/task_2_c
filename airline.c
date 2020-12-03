@@ -18,15 +18,17 @@ int initAirline(Airline* pAirline)
 	pAirline->name = (char*)malloc(strlen(name) * sizeof(char));
 	strcpy(pAirline->name, name);
 
-
-
-
 	return 1;
 }
 
 void printAirline(Airline* pAirline)
 {
 	printf("\nAirline %s has %d flights: ", pAirline->name, pAirline->count_flights);
+	for(int i = 0; i < pAirline->count_flights; i++)
+	{
+		printf("Flight #%d", i+1);
+		printFlight(pAirline->pFlights[i]);
+	}
 
 }
 
