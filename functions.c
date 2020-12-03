@@ -44,7 +44,7 @@ char* getStrExactLength(char* msg)
 
 void printMenu()
 {
-	printf("\nMain Menu: (please choose an option)\n"
+	printf("\n\nMain Menu: (please choose an option)\n"
 			"1)\tAdd a flight to airline\n"
 			"2)\tAdd an airport to airport manager\n"
 			"3)\tPrint airline details\n"

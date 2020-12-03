@@ -25,11 +25,11 @@ int main()
 		{
 		case 1:
 			// add a flight to airline
-			addFlightToAirline(airportManager, airline);
+			//addFlightToAirline(airportManager, airline);
 			break;
 
 		case 2:
-			//printf("");
+			// add an airport to airport manager
 			break;
 
 		case 3:
