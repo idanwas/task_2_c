@@ -60,6 +60,7 @@ int main()
 			printf("\nWrong option. Please try again!");
 			break;
 		}
+		cleanBuffer();
 
 
 	}while(flag);

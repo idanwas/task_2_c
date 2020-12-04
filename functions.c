@@ -1,11 +1,12 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "functions.h"
 
-
+void cleanBuffer()
+{
+	while(getchar() != '\n');
+}
 
 char* myGets(char* buf, size_t size)
 {

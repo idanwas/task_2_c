@@ -6,6 +6,7 @@
 #include "airport_manager.h"
 #include "airline.h"
 
+void cleanBuffer();
 
 char* myGets(char* buf, size_t size);
 
