@@ -15,11 +15,11 @@ typedef struct
 
 int initFlight(Flight* pFlight);
 
-void printFlight(Flight* pFlight);
+void printFlight(const Flight* pFlight);
 
 void freeFlight(Flight* pFlight);
 
-int isFlightInLine(Flight flight, const char from[4], const char to[4]);
+int isFlightInLine(const Flight flight, const char from[4], const char to[4]);
 
 int getFlightsCountOfLine(Flight** pFlights, int size, const char from[4], const char to[4]);
 

@@ -23,7 +23,7 @@ int initAirportManager(AirportManager* pAirMan)
 	return 1;
 }
 
-void printAirportManager(AirportManager* pAirMan)
+void printAirportManager(const AirportManager* pAirMan)
 {
 	printf("\nThis airport manager have %d airports: ", pAirMan->count_airports);
 	for(int i = 0; i < pAirMan->count_airports; i++)
@@ -53,7 +53,7 @@ int addAirport(AirportManager* pAirMan, int index)
 	return 1;
 }
 
-Airport* searchAirportByCode(AirportManager* pAirMan, const char IATA[4])
+Airport* searchAirportByCode(const AirportManager* pAirMan, const char IATA[4])
 {
 	if(!pAirMan || !pAirMan->airports)
 		return NULL;
@@ -65,4 +65,33 @@ Airport* searchAirportByCode(AirportManager* pAirMan, const char IATA[4])
 	}
 
 	return NULL;
+}
+
+int addAirportToAirMan(AirportManager* pAirMan)
+{
+	if(!pAirMan)
+		return 0;
+
+	while(getchar() != '\n');
+	printf("\nAdd airport to airport manager: ");
+	Airport* pAirport = (Airport*)malloc(sizeof(Airport));
+	if(initAirport(pAirport) == 0)
+	{
+		printf("airport wrong");
+		return 0;
+	}
+
+	if(searchAirportByCode(pAirMan, pAirport->IATA))
+	{
+		printf("\nThere is already an airport with this IATA code: %s", pAirport->IATA);
+		freeAirport(pAirport);
+		return 0;
+	}
+
+	int old_size = pAirMan->count_airports;
+	pAirMan->airports = (Airport*)realloc(pAirMan->airports, (old_size + 1) * sizeof(Airport));
+	pAirMan->airports[old_size] = *pAirport;
+	pAirMan->count_airports++;
+
+	return 1;
 }

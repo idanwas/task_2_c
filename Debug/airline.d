@@ -1,5 +1,5 @@
 airline.o: ../airline.c ../airline.h ../flight.h ../airport.h ../date.h \
- ../functions.h
+ ../airport_manager.h ../functions.h
 
 ../airline.h:
 
@@ -8,5 +8,7 @@ airline.o: ../airline.c ../airline.h ../flight.h ../airport.h ../date.h \
 ../airport.h:
 
 ../date.h:
+
+../airport_manager.h:
 
 ../functions.h:

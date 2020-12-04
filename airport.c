@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "airport.h"
 #include "functions.h"
-
 
 int initAirport(Airport* pAirport)
 {
@@ -16,7 +14,7 @@ int initAirport(Airport* pAirport)
 	// get name need a fix !!!!!!!!!!!!!!!
 	//
 	//
-	char* name = getStrExactLength("\nPlease enter airport name: ");
+	char* name = getStrExactLength("\nPlease enter airport name: ", 0);
 	if(!name)
 		printf("\n didn't get a name");
 	pAirport->name = (char*)malloc(strlen(name) * sizeof(char));
@@ -25,22 +23,22 @@ int initAirport(Airport* pAirport)
 	//
 
 
-	char* country = getStrExactLength("\nPlease enter country name: ");
+	char* country = getStrExactLength("\nPlease enter country name: ", 0);
 	if(!country)
 		printf("\n didn't get a country");
 	pAirport->country = (char*)malloc(strlen(country) * sizeof(char));
 	strcpy(pAirport->country, country);
 
-	//strcpy(pAirport->IATA,readIATA("\nPlease enter IATA code: "));
-	printf("\nPlease enter IATA code: ");
-	fgets(pAirport->IATA, 4 , stdin);
+	strcpy(pAirport->IATA, getStrExactLength("\nPlease enter IATA code: ", 4));
+	//printf("\nPlease enter IATA code: ");
+	//fgets(pAirport->IATA, 4 , stdin);
 	if(!pAirport->IATA)
 		printf("\n didn't get a IATA code");
 
 	return 1;
 }
 
-void printAirport(Airport* pAirport)
+void printAirport(const Airport* pAirport)
 {
 	if(!pAirport)
 	{
@@ -58,7 +56,7 @@ void freeAirport(Airport* pAirport)
 }
 
 // return 1 if IATA_1 = IATA_2
-int cmpAirportports(Airport* pA1, Airport* pA2)
+int cmpAirportports(const Airport* pA1, const Airport* pA2)
 {
 	if(!pA1 || !pA2)
 		return 0;
@@ -70,7 +68,7 @@ int cmpAirportports(Airport* pA1, Airport* pA2)
 }
 
 // return 1 if IATA = airport_IATA
-int isCodeEqualsAirport(Airport* pAirport, const char IATA[4])
+int isCodeEqualsAirport(const Airport* pAirport, const char IATA[4])
 {
 	if(!pAirport || !IATA)
 		return 0;

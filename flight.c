@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "flight.h"
-
 
 int initFlight(Flight* pFlight)
 {
 	if(!pFlight)
 		return 0;
 
-	printf("\nPlease enter departure airport of this flight: ");
+/*	printf("\nPlease enter departure airport of this flight: ");
 	Airport* from = (Airport*)malloc(sizeof(Airport));
 	initAirport(from);
 
@@ -19,7 +17,7 @@ int initFlight(Flight* pFlight)
 	printf("\nPlease enter arrival airport of this flight: ");
 	Airport* to = (Airport*)malloc(sizeof(Airport));
 	initAirport(to);
-
+*/
 	getchar();
 
 	printf("\nPlease enter the hour of this flight (0-23): ");
@@ -33,12 +31,12 @@ int initFlight(Flight* pFlight)
 	return 1;
 }
 
-void printFlight(Flight* pFlight)
+void printFlight(const Flight* pFlight)
 {
-	printf("\nThis flight departures from: ");
+	printf("\tThis flight departures from: ");
 	printAirport(pFlight->pFrom);
 
-	printf("\t and arriving to: ");
+	printf(", and arriving to: ");
 	printAirport(pFlight->pTo);
 
 	// print time and date
@@ -54,7 +52,7 @@ void freeFlight(Flight* pFlight)
 }
 
 // return 1 if from=flight.from.code AND to=flight.to.code
-int isFlightInLine(Flight flight, const char from[4], const char to[4])
+int isFlightInLine(const Flight flight, const char from[4], const char to[4])
 {
 	if(!from || !to)
 		return 0;

@@ -15,8 +15,9 @@ int initDate(Date* pDate)
 		printf("invalid date pointer");
 		return 0;
 	}
+	while(getchar() != '\n');
 
-	char* date = getStrExactLength("\nPlease enter date in this format (dd/mm/yyyy): ");
+	/*char* date = getStrExactLength("\nPlease enter date in this format (dd/mm/yyyy): ", 0);
 	if(!date)
 		printf("\n something wrong with date");
 
@@ -28,11 +29,22 @@ int initDate(Date* pDate)
 
 	if(!checkDate(pDate))
 		return 0;
+*/
+
+	printf("\nPlease enter date in this format (dd/mm/yyyy): ");
+	if(scanf("%d/%d/%d", &pDate->day, &pDate->month, &pDate->year) == 3)
+	{
+		if(!checkDate(pDate))
+			return 0;
+	}
+	else
+		return 0;
+
 
 	return 1;
 }
 
-void printDate(Date* pDate)
+void printDate(const Date* pDate)
 {
 	printf("%2d/%2d/%4d", pDate->day, pDate->month, pDate->year);
 }
@@ -44,7 +56,7 @@ void freeDate(Date* pDate)
 	free(pDate);
 }
 
-int getDateValuesFromStr(char* date, int* pDay, int* pMonth, int* pYear)	// length("dd/mm/yyyy\0") = 11
+/*int getDateValuesFromStr(char* date, int* pDay, int* pMonth, int* pYear)	// length("dd/mm/yyyy\0") = 11
 {
 	if(!date || strlen(date) != 11 || (date[2] != '/' && date[5] != '/'))
 		return 0;
@@ -57,9 +69,9 @@ int getDateValuesFromStr(char* date, int* pDay, int* pMonth, int* pYear)	// leng
 	*pYear = 1000 * (date[6] - '0') + 100 * (date[7] - '0') + 10 * (date[8] - '0') + (date[9] - '0');
 
 	return 1;
-}
+}*/
 
-int checkDate(Date* pDate)
+int checkDate(const Date* pDate)
 {
 	if(!pDate)
 		return 0;

@@ -9,12 +9,8 @@
 
 char* myGets(char* buf, size_t size);
 
-char* getStrExactLength(char* msg);
+char* getStrExactLength(const char* msg, int length);
 
 void printMenu();
-
-int addFlightToAirline(AirportManager* pAirMan, Airline* pAirline);
-
-char* readIATA(char* msg);
 
 #endif /* FUNCTIONS_H_ */

@@ -8,14 +8,14 @@
 int main()
 {
 	int flag = 1, option;
-	AirportManager* airportManager = (AirportManager*)malloc(sizeof(AirportManager));
-	initAirportManager(airportManager);
-	printAirportManager(airportManager);
+	AirportManager* pAirMan = (AirportManager*)malloc(sizeof(AirportManager));
+	initAirportManager(pAirMan);
+	printAirportManager(pAirMan);
 
 	while(getchar() != '\n');
 
-	Airline* airline = (Airline*)malloc(sizeof(Airline));
-	initAirline(airline);
+	Airline* pAirline = (Airline*)malloc(sizeof(Airline));
+	initAirline(pAirline);
 	//printAirline(airline);
 
 	do{
@@ -25,21 +25,26 @@ int main()
 		{
 		case 1:
 			// add a flight to airline
-			//addFlightToAirline(airportManager, airline);
+			if(addFlightToAirline(pAirMan, pAirline) == 0)
+				printf("flight hasnt added to airline");
 			break;
 
 		case 2:
 			// add an airport to airport manager
+			if(addAirportToAirMan(pAirMan) == 1)
+				printf("airport added to airport manager");
+			else
+				printf("airport has not added to airport manager");
 			break;
 
 		case 3:
 			printf("\nAirline details: ");
-			printAirline(airline);
+			printAirline(pAirline);
 			break;
 
 		case 4:
 			printf("\nAirport Manager details: ");
-			printAirportManager(airportManager);
+			printAirportManager(pAirMan);
 			break;
 
 		case 5:
@@ -60,8 +65,8 @@ int main()
 	}while(flag);
 
 
-	freeAirline(airline);
-	freeAirportManager(airportManager);
+	freeAirline(pAirline);
+	freeAirportManager(pAirMan);
 
 	return 0;
 }

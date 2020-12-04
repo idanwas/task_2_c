@@ -12,13 +12,14 @@ typedef struct
 
 int initAirportManager(AirportManager* pAirMan);
 
-int addAirport(AirportManager* pAirMan, int index);
-
-void printAirportManager(AirportManager* pAirMan);
+void printAirportManager(const AirportManager* pAirMan);
 
 void freeAirportManager(AirportManager* pAirMan);
 
-Airport* searchAirportByCode(AirportManager* pAirMan, const char IATA[4]);
+int addAirport(AirportManager* pAirMan, int index);
 
+Airport* searchAirportByCode(const AirportManager* pAirMan, const char IATA[4]);
+
+int addAirportToAirMan(AirportManager* pAirMan);
 
 #endif /* AIRPORT_MANAGER_H_ */
