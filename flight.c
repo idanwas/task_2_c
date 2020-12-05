@@ -8,25 +8,16 @@ int initFlight(Flight* pFlight)
 	if(!pFlight)
 		return 0;
 
-/*	printf("\nPlease enter departure airport of this flight: ");
-	Airport* from = (Airport*)malloc(sizeof(Airport));
-	initAirport(from);
-
-	getchar();
-
-	printf("\nPlease enter arrival airport of this flight: ");
-	Airport* to = (Airport*)malloc(sizeof(Airport));
-	initAirport(to);
-*/
-	getchar();
+	cleanBuffer();
 
 	printf("\nPlease enter the hour of this flight (0-23): ");
 	scanf("%d", &pFlight->hour);
 	if(pFlight->hour > 23)
 		pFlight->hour %= 24;
 
-	Date* date = (Date*)malloc(sizeof(Date));
-	initDate(date);
+	pFlight->date = (Date*)malloc(sizeof(Date));
+	if(initDate(pFlight->date) == 0)
+		return 0;
 
 	return 1;
 }
@@ -40,7 +31,8 @@ void printFlight(const Flight* pFlight)
 	printAirport(pFlight->pTo);
 
 	// print time and date
-	printf(" print time and date");
+	printf(", at %d o'clock on ", pFlight->hour);
+	printDate(pFlight->date);
 }
 
 void freeFlight(Flight* pFlight)

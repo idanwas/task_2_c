@@ -19,6 +19,7 @@ int initAirline(Airline* pAirline)
 		printf("\n didn't get a name");
 	pAirline->name = (char*)malloc(strlen(name) * sizeof(char));
 	strcpy(pAirline->name, name);
+	free(name);
 
 	return 1;
 }
@@ -122,7 +123,7 @@ int addFlightToAirline(const AirportManager* pAirMan, Airline* pAirline)
 	pFlight->pTo = pDestAirport;
 	if(initFlight(pFlight) == 0)
 	{
-		printf("wrong");
+		freeFlight(pFlight);
 		return 0;
 	}
 

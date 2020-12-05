@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "airport_manager.h"
 #include "airline.h"
 #include "functions.h"
@@ -27,12 +26,14 @@ int main()
 			// add a flight to airline
 			if(addFlightToAirline(pAirMan, pAirline) == 0)
 				printf("flight hasnt added to airline");
+			else
+				printf("\nFlight added to %s airline", pAirline->name);
 			break;
 
 		case 2:
 			// add an airport to airport manager
 			if(addAirportToAirMan(pAirMan) == 1)
-				printf("airport added to airport manager");
+				printf("\nAirport added to airport manager");
 			else
 				printf("airport has not added to airport manager");
 			break;

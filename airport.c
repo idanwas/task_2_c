@@ -11,27 +11,24 @@ int initAirport(Airport* pAirport)
 		printf("\n initAirport wrong");
 		return 0;
 	}
-	// get name need a fix !!!!!!!!!!!!!!!
-	//
-	//
+
 	char* name = getStrExactLength("\nPlease enter airport name: ", 0);
 	if(!name)
 		printf("\n didn't get a name");
+	name = fixAirportName(name);
 	pAirport->name = (char*)malloc(strlen(name) * sizeof(char));
 	strcpy(pAirport->name, name);
-	//
-	//
-
+	free(name);
 
 	char* country = getStrExactLength("\nPlease enter country name: ", 0);
 	if(!country)
 		printf("\n didn't get a country");
 	pAirport->country = (char*)malloc(strlen(country) * sizeof(char));
 	strcpy(pAirport->country, country);
+	free(country);
 
 	strcpy(pAirport->IATA, getStrExactLength("\nPlease enter IATA code: ", 4));
-	//printf("\nPlease enter IATA code: ");
-	//fgets(pAirport->IATA, 4 , stdin);
+
 	if(!pAirport->IATA)
 		printf("\n didn't get a IATA code");
 
