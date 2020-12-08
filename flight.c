@@ -9,11 +9,18 @@ int initFlight(Flight* pFlight)
 	if(!pFlight)
 		return 0;
 
-	printf("\nPlease enter the hour of this flight (0-23): ");
-	scanf("%d", &pFlight->hour);
-	if(pFlight->hour > 23)
-		pFlight->hour %= 24;
+	// read hour from user until hour is OK
+	int flag = 0;
+	do {
+		printf("\nPlease enter the hour of this flight (0-23): ");
+		scanf("%d", &pFlight->hour);
+		if(pFlight->hour < 24 && pFlight->hour >= 0)
+			flag = 1;
+		else
+			printf("Invalid hour! Please try again.");
+	} while (!flag);
 
+	// initialize date
 	pFlight->date = (Date*)malloc(sizeof(Date));
 	if(initDate(pFlight->date) == 0)
 		return 0;

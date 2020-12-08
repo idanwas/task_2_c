@@ -9,7 +9,7 @@ int initAirportManager(AirportManager* pAirMan)
 	if(!pAirMan)
 		return 0;
 
-	printf("\nPlease enter how many airports for this airport manager: ");
+	printf("Please enter how many airports for this airport manager: ");
 	scanf("%d", &pAirMan->count_airports);
 
 	pAirMan->airports = (Airport*)malloc(pAirMan->count_airports * sizeof(Airport));
@@ -47,7 +47,7 @@ int addAirportByIndex(AirportManager* pAirMan, int index)
 		return 0;
 
 	// initialize airport
-	printf("Airport #%d: ", index+1);
+	printf("Airport #%d:\n", index+1);
 	if(initAirport(&(pAirMan->airports[index])) == 0)
 		return 0;
 

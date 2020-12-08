@@ -11,12 +11,10 @@ int main()
 	// initialize airport manager
 	AirportManager* pAirMan = (AirportManager*)malloc(sizeof(AirportManager));
 	initAirportManager(pAirMan);
-	printAirportManager(pAirMan);
 
 	// initialize airline company
 	Airline* pAirline = (Airline*)malloc(sizeof(Airline));
 	initAirline(pAirline);
-	printAirline(pAirline);
 
 	// present menu
 	do{
@@ -28,7 +26,7 @@ int main()
 		case 1:
 			// add a flight to airline
 			if(addFlightToAirline(pAirMan, pAirline) == 0)
-				printf("flight hasn't added to airline");
+				printf("\nFlight hasn't added to airline");
 			else
 				printf("\nFlight added to %s airline", pAirline->name);
 			break;
@@ -38,7 +36,7 @@ int main()
 			if(addAirportToAirMan(pAirMan) == 1)
 				printf("\nAirport added to airport manager");
 			else
-				printf("\nAirport has not added to airport manager");
+				printf("\nAirport hasn't added to airport manager");
 			break;
 
 		case 3:
