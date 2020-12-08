@@ -7,17 +7,21 @@
 int main()
 {
 	int flag = 1, option;
+
+	// initialize airport manager
 	AirportManager* pAirMan = (AirportManager*)malloc(sizeof(AirportManager));
 	initAirportManager(pAirMan);
 	printAirportManager(pAirMan);
 
+	// initialize airline company
 	Airline* pAirline = (Airline*)malloc(sizeof(Airline));
 	initAirline(pAirline);
 	printAirline(pAirline);
 
+	// present menu
 	do{
 		printMenu();
-		scanf("%d",&option);
+		scanf("%d",&option);	// read option from user
 		cleanBuffer();
 		switch(option)
 		{
@@ -48,7 +52,7 @@ int main()
 			break;
 
 		case 5:
-			//printf("");
+			printCountFlightsFunction(pAirline, pAirMan);
 			break;
 
 		case 6:
@@ -63,6 +67,7 @@ int main()
 	}while(flag);
 
 
+	// free memory allocations
 	freeAirline(pAirline);
 	freeAirportManager(pAirMan);
 

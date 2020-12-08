@@ -12,7 +12,6 @@ typedef struct
 	Flight** pFlights;
 }Airline;
 
-
 int initAirline(Airline* pAirline);
 
 void printAirline(const Airline* pAirline);
@@ -25,5 +24,6 @@ void printCountFlightsInLine(Airline* pAirline, const char from[4], const char t
 
 int addFlightToAirline(const AirportManager* pAirMan, Airline* pAirline);
 
+void printCountFlightsFunction(Airline* pAirline, AirportManager* pAirMan);
 
 #endif /* AIRLINE_H_ */

@@ -5,7 +5,6 @@
 #include "airport.h"
 #include "functions.h"
 
-
 int initAirport(Airport* pAirport)
 {
 	if(!pAirport)
@@ -14,7 +13,8 @@ int initAirport(Airport* pAirport)
 		return 0;
 	}
 
-	char* name = getStrExactLength("Please enter airport name: ", 0);
+	// read airport's name from user and change it by the rules
+	char* name = getStrExactLength("Please enter airport name: ");
 	if(!name)
 		printf("\n didn't get a name");
 	name = fixAirportName(name);
@@ -22,18 +22,17 @@ int initAirport(Airport* pAirport)
 	strcpy(pAirport->name, name);
 	free(name);
 
+	// read airport's country from user
+/*	pAirport->country = (char*)malloc(sizeof(char));
+	readString("Please enter country name: ", 0, pAirport->country);*/
+	pAirport->country = readString("Please enter country name: ");
 
-	pAirport->country = (char*)malloc(sizeof(char));
-	readString("Please enter country name: ", 0, pAirport->country);
-
-	strcpy(pAirport->IATA, getStrExactLength("Please enter IATA code: ", 0));
+	// read airport's IATA code from user until IATA code is legal
+	strcpy(pAirport->IATA, getStrExactLength("Please enter IATA code: "));
 	while (!isLegalCode(pAirport->IATA))
 	{
-		strcpy(pAirport->IATA, getStrExactLength("Please enter IATA code: ", 0));
+		strcpy(pAirport->IATA, getStrExactLength("Please enter IATA code: "));
 	}
-
-	if(!pAirport->IATA)
-		printf("\n didn't get a IATA code");
 
 	return 1;
 }
@@ -56,7 +55,7 @@ void freeAirport(Airport* pAirport)
 }
 
 /* returns 1 if IATA_1 = IATA_2 */
-int cmpAirportports(const Airport* pA1, const Airport* pA2)
+int cmpAirports(const Airport* pA1, const Airport* pA2)
 {
 	if(!pA1 || !pA2)
 		return 0;
@@ -88,26 +87,27 @@ char* fixAirportName(char* name)
 		return NULL;
 	}
 
-
 	char* del = " ";
 	char* words = strtok(name, del);
 	word_length = strlen(words);
 	char* fixed = (char*)malloc(word_length * sizeof(char));
 
+	// take care of each word by itself
 	do{
 		word_length = strlen(words);
 		char* word;
-		if(word_length % 2 == 0)
+
+		if(word_length % 2 == 0)	// word has even number of letters
 			word = fixEvenCharsWord(words);
-		else
+		else	// word has even number of letters
 		{
 			if(counter == count_words)
 				word = fixOddCharsWord(words, 0); // last word
 			else
-				word = fixOddCharsWord(words, 1);
+				word = fixOddCharsWord(words, 1); // not the last word
 		}
 
-		if(counter != 1)
+		if(counter != 1)	// skip the first word
 		{
 			old_length = strlen(fixed);
 			new_length = old_length + 2 + strlen(word);
@@ -116,17 +116,17 @@ char* fixAirportName(char* name)
 			fixed[old_length + 1] = ' ';
 		}
 		strcat(fixed, word);
+
 		words = strtok(NULL, del);
 		counter++;
 	}while(words != NULL);
-
 
 	free(name);
 	return fixed;
 }
 
 /* returns 1 if IATA code is 3 letters and all of them are upper case */
-int isLegalCode(char* IATA)
+int isLegalCode(const char* IATA)
 {
 	int length = strlen(IATA);
 	if(length != 3)
@@ -146,4 +146,3 @@ int isLegalCode(char* IATA)
 
 	return 1;
 }
-

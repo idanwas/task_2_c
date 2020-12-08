@@ -10,7 +10,7 @@ void cleanBuffer();
 
 char* myGets(char* buf, size_t size);
 
-char* getStrExactLength(const char* msg, int length);
+char* getStrExactLength(const char* msg);
 
 int countWords(char* str);
 
@@ -18,7 +18,7 @@ char* fixEvenCharsWord(char* word);
 
 char* fixOddCharsWord(char* word, int flag);
 
-int readString(char* msg, int size, char* dest);
+char* readString(char* msg);
 
 void printMenu();
 

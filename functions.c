@@ -23,7 +23,7 @@ char* myGets(char* buf, size_t size)
 	return NULL;
 }
 
-char* getStrExactLength(const char* msg, int length)
+char* getStrExactLength(const char* msg)
 {
 	char* theStr = NULL;
 	char inpStr[MAX_LENGTH];
@@ -31,21 +31,10 @@ char* getStrExactLength(const char* msg, int length)
 	// ask for a string from the user using the message
 	printf("%s", msg);
 
-/*	if(length > 0)
-	{
-		fgets(inpStr, length, stdin);
-	}
-	else
-	{
-		myGets(inpStr, sizeof(inpStr));
-
-		// find string size and add 1 for the '\0'
-		length = strlen(inpStr) + 1;
-	}*/
 	myGets(inpStr, sizeof(inpStr));
 
 	// find string size and add 1 for the '\0'
-	length = strlen(inpStr) + 1;
+	int length = strlen(inpStr) + 1;
 	// allocate a place for the string
 	theStr = (char*)malloc(length * sizeof(char));
 	// copy the string to the right location
@@ -84,6 +73,7 @@ char* fixEvenCharsWord(char* word)
 	return temp;
 }
 
+/* returns the number of words in a string */
 int countWords(char* str)
 {
 	int count = 0;
@@ -99,16 +89,12 @@ int countWords(char* str)
 	return count;
 }
 
-int readString(char* msg, int size, char* dest)
+char* readString(char* msg)
 {
-	char* temp = getStrExactLength(msg, size);
-	if(!temp)
-		return 0;
-
-	dest = (char*)realloc(dest,strlen(temp) * sizeof(char));
-	strcpy(dest, temp);
-	free(temp);
-	return 1;
+	char* str = getStrExactLength(msg);
+	if(!str)
+		return NULL;
+	return str;
 }
 
 void printMenu()

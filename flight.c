@@ -42,7 +42,7 @@ void freeFlight(Flight* pFlight)
 	free(pFlight);
 }
 
-// return 1 if from=flight.from.code AND to=flight.to.code
+/* returns 1 if from = flight.from.code AND to = flight.to.code */
 int isFlightInLine(const Flight flight, const char from[4], const char to[4])
 {
 	if(!from || !to)

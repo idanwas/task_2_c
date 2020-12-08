@@ -16,7 +16,7 @@ int initAirportManager(AirportManager* pAirMan)
 	cleanBuffer();
 	for(int i = 0; i < pAirMan->count_airports; i++)
 	{
-		if(addAirport(pAirMan, i) == 0)
+		if(addAirportByIndex(pAirMan, i) == 0)
 			printf("wrong");
 	}
 	return 1;
@@ -41,10 +41,12 @@ void freeAirportManager(AirportManager* pAirMan)
 	free(pAirMan);
 }
 
-int addAirport(AirportManager* pAirMan, int index)
+int addAirportByIndex(AirportManager* pAirMan, int index)
 {
 	if(!pAirMan)
 		return 0;
+
+	// initialize airport
 	printf("Airport #%d: ", index+1);
 	if(initAirport(&(pAirMan->airports[index])) == 0)
 		return 0;
@@ -52,6 +54,7 @@ int addAirport(AirportManager* pAirMan, int index)
 	return 1;
 }
 
+/* returns airport's pointer in the airport manager with that IATA code */
 Airport* searchAirportByCode(const AirportManager* pAirMan, const char IATA[4])
 {
 	if(!pAirMan || !pAirMan->airports)
@@ -66,12 +69,14 @@ Airport* searchAirportByCode(const AirportManager* pAirMan, const char IATA[4])
 	return NULL;
 }
 
-int addAirportToAirMan(AirportManager* pAirMan)
+/* returns 1 if airport added successfully to the airport manager */
+int addAirportToAirMan(AirportManager* pAirMan) // option #2 in menu
 {
 	if(!pAirMan)
 		return 0;
 
-	printf("\nAdd airport to airport manager: ");
+	// initialize airport
+	printf("\nAdd airport to airport manager:\n");
 	Airport* pAirport = (Airport*)malloc(sizeof(Airport));
 	if(initAirport(pAirport) == 0)
 	{
@@ -79,6 +84,7 @@ int addAirportToAirMan(AirportManager* pAirMan)
 		return 0;
 	}
 
+	// check that airport has unique IATA code
 	if(searchAirportByCode(pAirMan, pAirport->IATA))
 	{
 		printf("\nThere is already an airport with this IATA code: %s", pAirport->IATA);
@@ -86,10 +92,24 @@ int addAirportToAirMan(AirportManager* pAirMan)
 		return 0;
 	}
 
+	// add airport to airport manager
 	int old_size = pAirMan->count_airports;
 	pAirMan->airports = (Airport*)realloc(pAirMan->airports, (old_size + 1) * sizeof(Airport));
 	pAirMan->airports[old_size] = *pAirport;
 	pAirMan->count_airports++;
 
 	return 1;
+}
+
+/* returns IATA code that read from user and checked if legal */
+char* readAndCheckIATA(AirportManager* pAirMan, char* msg)
+{
+	if(!pAirMan)
+		return NULL;
+
+	char* IATA = readString(msg);
+	if(!isLegalCode(IATA))
+		return NULL;
+
+	return IATA;
 }

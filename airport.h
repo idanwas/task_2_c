@@ -20,6 +20,6 @@ int isCodeEqualsAirport(const Airport* pA, const char IATA[4]);
 
 char* fixAirportName(char* name);
 
-int isLegalCode(char* IATA);
+int isLegalCode(const char* IATA);
 
 #endif /* AIRPORT_H_ */

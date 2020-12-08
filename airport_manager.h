@@ -9,17 +9,18 @@ typedef struct
 	Airport* airports;
 }AirportManager;
 
-
 int initAirportManager(AirportManager* pAirMan);
 
 void printAirportManager(const AirportManager* pAirMan);
 
 void freeAirportManager(AirportManager* pAirMan);
 
-int addAirport(AirportManager* pAirMan, int index);
+int addAirportByIndex(AirportManager* pAirMan, int index);
 
 Airport* searchAirportByCode(const AirportManager* pAirMan, const char IATA[4]);
 
 int addAirportToAirMan(AirportManager* pAirMan);
+
+char* readAndCheckIATA(AirportManager* pAirMan, char* msg);
 
 #endif /* AIRPORT_MANAGER_H_ */
