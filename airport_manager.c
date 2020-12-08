@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "functions.h"
 #include "airport_manager.h"
 
 int initAirportManager(AirportManager* pAirMan)
@@ -13,10 +13,9 @@ int initAirportManager(AirportManager* pAirMan)
 	scanf("%d", &pAirMan->count_airports);
 
 	pAirMan->airports = (Airport*)malloc(pAirMan->count_airports * sizeof(Airport));
-
+	cleanBuffer();
 	for(int i = 0; i < pAirMan->count_airports; i++)
 	{
-		while(getchar() != '\n');
 		if(addAirport(pAirMan, i) == 0)
 			printf("wrong");
 	}
@@ -46,7 +45,7 @@ int addAirport(AirportManager* pAirMan, int index)
 {
 	if(!pAirMan)
 		return 0;
-
+	printf("Airport #%d: ", index+1);
 	if(initAirport(&(pAirMan->airports[index])) == 0)
 		return 0;
 
@@ -72,7 +71,6 @@ int addAirportToAirMan(AirportManager* pAirMan)
 	if(!pAirMan)
 		return 0;
 
-	while(getchar() != '\n');
 	printf("\nAdd airport to airport manager: ");
 	Airport* pAirport = (Airport*)malloc(sizeof(Airport));
 	if(initAirport(pAirport) == 0)

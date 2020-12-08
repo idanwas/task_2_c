@@ -14,11 +14,11 @@ char* getStrExactLength(const char* msg, int length);
 
 int countWords(char* str);
 
-char* fixAirportName(char* name);
-
 char* fixEvenCharsWord(char* word);
 
-char* fixOddcharsWord(char* word, int flag);
+char* fixOddCharsWord(char* word, int flag);
+
+int readString(char* msg, int size, char* dest);
 
 void printMenu();
 

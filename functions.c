@@ -31,7 +31,7 @@ char* getStrExactLength(const char* msg, int length)
 	// ask for a string from the user using the message
 	printf("%s", msg);
 
-	if(length > 0)
+/*	if(length > 0)
 	{
 		fgets(inpStr, length, stdin);
 	}
@@ -41,62 +41,21 @@ char* getStrExactLength(const char* msg, int length)
 
 		// find string size and add 1 for the '\0'
 		length = strlen(inpStr) + 1;
-	}
+	}*/
+	myGets(inpStr, sizeof(inpStr));
+
+	// find string size and add 1 for the '\0'
+	length = strlen(inpStr) + 1;
 	// allocate a place for the string
 	theStr = (char*)malloc(length * sizeof(char));
 	// copy the string to the right location
 	if(theStr != NULL)
 		strcpy(theStr, inpStr);
+
 	return theStr;
 }
 
-char* fixAirportName(char* name)
-{
-	int count_words = countWords(name), word_length, new_length, old_length = 0, counter = 1;
-	if(count_words == 0)
-	{
-		printf("0 words");
-		return NULL;
-	}
-
-
-	char* del = " ";
-	char* words = strtok(name, del);
-	word_length = strlen(words);
-	char* fixed = (char*)malloc(word_length * sizeof(char));
-
-	do{
-		word_length = strlen(words);
-		char* word;
-		if(word_length % 2 == 0)
-			word = fixEvenCharsWord(words);
-		else
-		{
-			if(counter == count_words)
-				word = fixOddcharsWord(words, 0); // last word
-			else
-				word = fixOddcharsWord(words, 1);
-		}
-
-		if(counter != 1)
-		{
-			old_length = strlen(fixed);
-			new_length = old_length + 2 + strlen(word);
-			fixed = realloc(fixed, new_length * sizeof(char));
-			fixed[old_length] = ' ';
-			fixed[old_length + 1] = ' ';
-		}
-		strcat(fixed, word);
-		words = strtok(NULL, del);
-		counter++;
-	}while(words != NULL);
-
-
-	free(name);
-	return fixed;
-}
-
-char* fixOddcharsWord(char* word, int flag)
+char* fixOddCharsWord(char* word, int flag)
 {
 	// if flag is 0 then word is the last
 	int length = strlen(word);
@@ -138,6 +97,18 @@ int countWords(char* str)
 			str++;
 	}
 	return count;
+}
+
+int readString(char* msg, int size, char* dest)
+{
+	char* temp = getStrExactLength(msg, size);
+	if(!temp)
+		return 0;
+
+	dest = (char*)realloc(dest,strlen(temp) * sizeof(char));
+	strcpy(dest, temp);
+	free(temp);
+	return 1;
 }
 
 void printMenu()

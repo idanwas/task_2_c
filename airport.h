@@ -18,4 +18,8 @@ int cmpAirports(const Airport* a1, const Airport* a2);
 
 int isCodeEqualsAirport(const Airport* pA, const char IATA[4]);
 
+char* fixAirportName(char* name);
+
+int isLegalCode(char* IATA);
+
 #endif /* AIRPORT_H_ */

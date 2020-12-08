@@ -14,12 +14,8 @@ int initAirline(Airline* pAirline)
 	if(!pAirline)
 		return 0;
 
-	char* name = getStrExactLength("\nPlease enter airline name: ", 0);
-	if(!name)
-		printf("\n didn't get a name");
-	pAirline->name = (char*)malloc(strlen(name) * sizeof(char));
-	strcpy(pAirline->name, name);
-	free(name);
+	pAirline->name = (char*)malloc(sizeof(char));
+	readString("\nPlease enter airline name: ", 0, pAirline->name);
 
 	return 1;
 }
@@ -32,7 +28,6 @@ void printAirline(const Airline* pAirline)
 		printf("\nFlight #%d", i+1);
 		printFlight(pAirline->pFlights[i]);
 	}
-
 }
 
 void freeAirline(Airline* pAirline)
@@ -82,17 +77,14 @@ int addFlightToAirline(const AirportManager* pAirMan, Airline* pAirline)
 {
 	if(!pAirMan || !pAirline)
 	{
-		printf("airport or airline isnt ok");
+		printf("airport or airline isn't OK");
 		return 0;
 	}
 
-	while(getchar() != '\n');
 	char src[4], dest[4];
 	printf("\nAdd a flight to %s airline", pAirline->name);
 
-
 	strcpy(src, getStrExactLength("\nPlease enter IATA of source airport: ", 4));
-	while(getchar() != '\n');
 	Airport* pSrcAirport = (Airport*)malloc(sizeof(Airport));
 	pSrcAirport = searchAirportByCode(pAirMan, src);
 	if(!pSrcAirport)

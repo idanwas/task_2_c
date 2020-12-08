@@ -11,15 +11,14 @@ int main()
 	initAirportManager(pAirMan);
 	printAirportManager(pAirMan);
 
-	while(getchar() != '\n');
-
 	Airline* pAirline = (Airline*)malloc(sizeof(Airline));
 	initAirline(pAirline);
-	//printAirline(airline);
+	printAirline(pAirline);
 
 	do{
 		printMenu();
 		scanf("%d",&option);
+		cleanBuffer();
 		switch(option)
 		{
 		case 1:
@@ -61,9 +60,6 @@ int main()
 			printf("\nWrong option. Please try again!");
 			break;
 		}
-		cleanBuffer();
-
-
 	}while(flag);
 
 

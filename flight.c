@@ -2,13 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include "flight.h"
+#include "functions.h"
 
 int initFlight(Flight* pFlight)
 {
 	if(!pFlight)
 		return 0;
-
-	cleanBuffer();
 
 	printf("\nPlease enter the hour of this flight (0-23): ");
 	scanf("%d", &pFlight->hour);
@@ -24,10 +23,10 @@ int initFlight(Flight* pFlight)
 
 void printFlight(const Flight* pFlight)
 {
-	printf("\tThis flight departures from: ");
+	printf("\tThis flight departs from: ");
 	printAirport(pFlight->pFrom);
 
-	printf(", and arriving to: ");
+	printf(", and arrives to: ");
 	printAirport(pFlight->pTo);
 
 	// print time and date
