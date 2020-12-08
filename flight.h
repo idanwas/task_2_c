@@ -1,6 +1,5 @@
 #ifndef FLIGHT_H_
 #define FLIGHT_H_
-
 #include "airport.h"
 #include "date.h"
 
@@ -11,7 +10,6 @@ typedef struct
 	int hour;
 	Date* date;
 }Flight;
-
 
 int initFlight(Flight* pFlight);
 

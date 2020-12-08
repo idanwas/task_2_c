@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "airline.h"
 #include "airport_manager.h"
 #include "airport.h"
 #include "flight.h"
 #include "functions.h"
-
 
 int initAirline(Airline* pAirline)
 {
@@ -23,7 +21,7 @@ int initAirline(Airline* pAirline)
 
 void printAirline(const Airline* pAirline)
 {
-	printf("\nAirline %s has %d flights: ", pAirline->name, pAirline->count_flights);
+	printf("\n%s airline has %d flights: ", pAirline->name, pAirline->count_flights);
 	for(int i = 0; i < pAirline->count_flights; i++)
 	{
 		printf("\nFlight #%d", i+1);
@@ -73,7 +71,7 @@ void printCountFlightsInLine(Airline* pAirline, const char from[4], const char t
 	}
 
 	int counter = getFlightsCountOfLine(pAirline->pFlights, pAirline->count_flights, from, to);
-	printf("\nAirline %s has %d flight from %s to %s", pAirline->name, counter, from, to);
+	printf("\n%s airline has %d flights from %s to %s", pAirline->name, counter, from, to);
 }
 
 /* returns 1 if flight added successfully to airline company
@@ -138,4 +136,3 @@ void printCountFlightsFunction(Airline* pAirline, AirportManager* pAirMan)
 		return;
 	printCountFlightsInLine(pAirline, from, to);
 }
-

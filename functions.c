@@ -106,5 +106,5 @@ void printMenu()
 			"4)\tPrint airport manager details\n"
 			"5)\tHow many flights in a specific line?\n"
 			"6)\tExit\n"
-			"Your option:");
+			"Your option: ");
 }

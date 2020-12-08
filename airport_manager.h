@@ -1,6 +1,5 @@
 #ifndef AIRPORT_MANAGER_H_
 #define AIRPORT_MANAGER_H_
-
 #include "airport.h"
 
 typedef struct

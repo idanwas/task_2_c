@@ -1,12 +1,9 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-
 #include "date.h"
 #include "functions.h"
-
 
 int initDate(Date* pDate)
 {

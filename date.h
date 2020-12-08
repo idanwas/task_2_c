@@ -8,7 +8,6 @@ typedef struct
 	int year;
 }Date;
 
-
 int initDate(Date* pDate);
 
 void printDate(const Date* date);

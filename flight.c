@@ -64,4 +64,3 @@ int getFlightsCountOfLine(Flight** pFlights, int size, const char from[4], const
 	}
 	return counter;
 }
-

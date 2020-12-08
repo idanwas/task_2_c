@@ -28,7 +28,7 @@ int main()
 		case 1:
 			// add a flight to airline
 			if(addFlightToAirline(pAirMan, pAirline) == 0)
-				printf("flight hasnt added to airline");
+				printf("flight hasn't added to airline");
 			else
 				printf("\nFlight added to %s airline", pAirline->name);
 			break;
@@ -38,7 +38,7 @@ int main()
 			if(addAirportToAirMan(pAirMan) == 1)
 				printf("\nAirport added to airport manager");
 			else
-				printf("airport has not added to airport manager");
+				printf("\nAirport has not added to airport manager");
 			break;
 
 		case 3:

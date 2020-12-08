@@ -1,9 +1,7 @@
 #ifndef AIRLINE_H_
 #define AIRLINE_H_
-
 #include "flight.h"
 #include "airport_manager.h"
-
 
 typedef struct
 {
