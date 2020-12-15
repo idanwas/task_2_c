@@ -23,8 +23,6 @@ int initAirport(Airport* pAirport)
 	free(name);
 
 	// read airport's country from user
-/*	pAirport->country = (char*)malloc(sizeof(char));
-	readString("Please enter country name: ", 0, pAirport->country);*/
 	pAirport->country = readString("Please enter country name: ");
 
 	// read airport's IATA code from user until IATA code is legal

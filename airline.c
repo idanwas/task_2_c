@@ -12,8 +12,6 @@ int initAirline(Airline* pAirline)
 	if(!pAirline)
 		return 0;
 
-/*	pAirline->name = (char*)malloc(sizeof(char));
-	readString("\nPlease enter airline name: ", 0, pAirline->name);*/
 	pAirline->name = readString("\nPlease enter airline name: ");
 
 	return 1;
@@ -114,8 +112,8 @@ int addFlightToAirline(const AirportManager* pAirMan, Airline* pAirline) // opti
 
 	// initialize flight
 	Flight* pFlight = (Flight*)malloc(sizeof(Flight));
-	pFlight->pFrom = pSrcAirport;
-	pFlight->pTo = pDestAirport;
+	strcpy(pFlight->from, src);
+	strcpy(pFlight->to, dest);
 	if(initFlight(pFlight) == 0)
 	{
 		freeFlight(pFlight);

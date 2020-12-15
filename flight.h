@@ -5,8 +5,8 @@
 
 typedef struct
 {
-	Airport* pFrom;
-	Airport* pTo;
+	char from[4];
+	char to[4];
 	int hour;
 	Date* date;
 }Flight;

@@ -40,16 +40,19 @@ int main()
 			break;
 
 		case 3:
+			// print airline details
 			printf("\nAirline details: ");
 			printAirline(pAirline);
 			break;
 
 		case 4:
+			// print airport manager details
 			printf("\nAirport Manager details: ");
 			printAirportManager(pAirMan);
 			break;
 
 		case 5:
+			//
 			printCountFlightsFunction(pAirline, pAirMan);
 			break;
 

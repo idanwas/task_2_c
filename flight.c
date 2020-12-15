@@ -30,11 +30,9 @@ int initFlight(Flight* pFlight)
 
 void printFlight(const Flight* pFlight)
 {
-	printf("\tThis flight departs from: ");
-	printAirport(pFlight->pFrom);
-
-	printf(", and arrives to: ");
-	printAirport(pFlight->pTo);
+	// print from & to airports
+	printf("\tThis flight departs from: %s", pFlight->from);
+	printf(", and arrives to: %s", pFlight->to);
 
 	// print time and date
 	printf(", at %d o'clock on ", pFlight->hour);
@@ -44,8 +42,6 @@ void printFlight(const Flight* pFlight)
 void freeFlight(Flight* pFlight)
 {
 	freeDate(pFlight->date);
-	freeAirport(pFlight->pTo);
-	freeAirport(pFlight->pFrom);
 	free(pFlight);
 }
 
@@ -55,7 +51,7 @@ int isFlightInLine(const Flight flight, const char from[4], const char to[4])
 	if(!from || !to)
 		return 0;
 
-	if(strcmp(from, flight.pFrom->IATA) == 0 && strcmp(to, flight.pTo->IATA) == 0)
+	if(strcmp(from, flight.from) == 0 && strcmp(to, flight.to) == 0)
 		return 1;
 	else
 		return 0;
