@@ -24,6 +24,7 @@ int initAirportManager(AirportManager* pAirMan)
 
 void printAirportManager(const AirportManager* pAirMan)
 {
+	printf("\nAirport Manager details: ");
 	printf("\nThis airport manager have %d airports: ", pAirMan->count_airports);
 	for(int i = 0; i < pAirMan->count_airports; i++)
 	{
@@ -48,9 +49,18 @@ int addAirportByIndex(AirportManager* pAirMan, int index)
 
 	// initialize airport
 	printf("Airport #%d:\n", index+1);
-	if(initAirport(&(pAirMan->airports[index])) == 0)
+	if(!initAirport(&(pAirMan->airports[index])))
 		return 0;
 
+	while(!isUniqueIATA(pAirMan, index, pAirMan->airports[index].IATA))
+	{
+		// read airport's IATA code from user until IATA code is legal
+		strcpy(pAirMan->airports[index].IATA, getStrExactLength("Please enter IATA code: "));
+		while (!isLegalCode(pAirMan->airports[index].IATA))
+		{
+			strcpy(pAirMan->airports[index].IATA, getStrExactLength("Please enter IATA code: "));
+		}
+	}
 	return 1;
 }
 
@@ -78,7 +88,7 @@ int addAirportToAirMan(AirportManager* pAirMan) // option #2 in menu
 	// initialize airport
 	printf("\nAdd airport to airport manager:\n");
 	Airport* pAirport = (Airport*)malloc(sizeof(Airport));
-	if(initAirport(pAirport) == 0)
+	if(!initAirport(pAirport))
 	{
 		printf("airport wrong");
 		return 0;
@@ -112,4 +122,19 @@ char* readAndCheckIATA(AirportManager* pAirMan, char* msg)
 		return NULL;
 
 	return IATA;
+}
+
+/* returns 1 if IATA code is unique in airport manager */
+int isUniqueIATA(AirportManager* pAirMan, int index, const char IATA[4])
+{
+	for(int i = 0; i < index; i++)
+	{
+		if(!strcmp(pAirMan->airports[i].IATA, pAirMan->airports[index].IATA))
+		{
+			printf("\nThere is already an airport with this IATA code: %s", pAirMan->airports[index].IATA);
+			printf("\nPlease try again!\n");
+			return 0;
+		}
+	}
+	return 1;
 }

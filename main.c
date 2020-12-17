@@ -25,34 +25,32 @@ int main()
 		{
 		case 1:
 			// add a flight to airline
-			if(addFlightToAirline(pAirMan, pAirline) == 0)
-				printf("\nFlight hasn't added to airline");
+			if(addFlightToAirline(pAirMan, pAirline))
+				printf("\nFlight added successfully to %s airline", pAirline->name);
 			else
-				printf("\nFlight added to %s airline", pAirline->name);
+				printf("\nFlight hasn't added to airline");
 			break;
 
 		case 2:
 			// add an airport to airport manager
-			if(addAirportToAirMan(pAirMan) == 1)
-				printf("\nAirport added to airport manager");
+			if(addAirportToAirMan(pAirMan))
+				printf("\nAirport added successfully to airport manager");
 			else
 				printf("\nAirport hasn't added to airport manager");
 			break;
 
 		case 3:
 			// print airline details
-			printf("\nAirline details: ");
 			printAirline(pAirline);
 			break;
 
 		case 4:
 			// print airport manager details
-			printf("\nAirport Manager details: ");
 			printAirportManager(pAirMan);
 			break;
 
 		case 5:
-			//
+			// print how many flights in a specific line
 			printCountFlightsFunction(pAirline, pAirMan);
 			break;
 
@@ -66,7 +64,6 @@ int main()
 			break;
 		}
 	}while(flag);
-
 
 	// free memory allocations
 	freeAirline(pAirline);

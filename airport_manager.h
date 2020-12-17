@@ -22,4 +22,6 @@ int addAirportToAirMan(AirportManager* pAirMan);
 
 char* readAndCheckIATA(AirportManager* pAirMan, char* msg);
 
+int isUniqueIATA(AirportManager* pAirMan, int index, const char IATA[4]);
+
 #endif /* AIRPORT_MANAGER_H_ */

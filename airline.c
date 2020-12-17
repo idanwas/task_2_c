@@ -10,7 +10,10 @@
 int initAirline(Airline* pAirline)
 {
 	if(!pAirline)
+	{
+		printf("initAirline went wrong!");
 		return 0;
+	}
 
 	pAirline->name = readString("\nPlease enter airline name: ");
 
@@ -19,6 +22,7 @@ int initAirline(Airline* pAirline)
 
 void printAirline(const Airline* pAirline)
 {
+	printf("\nAirline details: ");
 	printf("\n%s airline has %d flights: ", pAirline->name, pAirline->count_flights);
 	for(int i = 0; i < pAirline->count_flights; i++)
 	{
