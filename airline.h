@@ -22,6 +22,8 @@ void printCountFlightsInLine(Airline* pAirline, const char from[4], const char t
 
 int addFlightToAirline(const AirportManager* pAirMan, Airline* pAirline);
 
+Airport* readUniqueAirport(const AirportManager* pAirMan, char* IATA, char* msg);
+
 void printCountFlightsFunction(Airline* pAirline, AirportManager* pAirMan);
 
 #endif /* AIRLINE_H_ */

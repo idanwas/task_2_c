@@ -90,8 +90,7 @@ int addFlightToAirline(const AirportManager* pAirMan, Airline* pAirline) // opti
 	printf("\nAdd a flight to %s airline", pAirline->name);
 
 	// read source airport from user and check if airport exist in airport manager
-	strcpy(src, getStrExactLength("\nPlease enter IATA of source airport: "));
-	Airport* pSrcAirport = searchAirportByCode(pAirMan, src);
+	Airport* pSrcAirport = readUniqueAirport(pAirMan, src, "\nPlease enter IATA of source airport: ");
 	if(!pSrcAirport)
 	{
 		printf("couldn't find %s airport", src);
@@ -99,8 +98,7 @@ int addFlightToAirline(const AirportManager* pAirMan, Airline* pAirline) // opti
 	}
 
 	// read destination airport from user and check if airport exist in airport manager
-	strcpy(dest, getStrExactLength("\nPlease enter IATA of destination airport: "));
-	Airport* pDestAirport = searchAirportByCode(pAirMan, dest);
+	Airport* pDestAirport = readUniqueAirport(pAirMan, dest, "\nPlease enter IATA of destination airport: ");
 	if(!pDestAirport)
 	{
 		printf("couldn't find %s airport", dest);
@@ -110,7 +108,7 @@ int addFlightToAirline(const AirportManager* pAirMan, Airline* pAirline) // opti
 	// check that airports are not the same
 	if(strcmp(src, dest) == 0)
 	{
-		printf("same IATA code: %s=%s. A flight cannot depart from and arrive to the same airport!", src, dest);
+		printf("same IATA code for both airports: %s. A flight cannot depart from and arrive to the same airport!", src);
 		return 0;
 	}
 
@@ -126,6 +124,12 @@ int addFlightToAirline(const AirportManager* pAirMan, Airline* pAirline) // opti
 
 	// add the flight to the airline company
 	return addFlight(pAirline, pFlight);
+}
+
+Airport* readUniqueAirport(const AirportManager* pAirMan, char* IATA, char* msg)
+{
+	strcpy(IATA, getStrExactLength(msg));
+	return searchAirportByCode(pAirMan, IATA);
 }
 
 void printCountFlightsFunction(Airline* pAirline, AirportManager* pAirMan)

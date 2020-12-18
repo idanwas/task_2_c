@@ -19,7 +19,8 @@ int main()
 	// present menu
 	do{
 		printMenu();
-		scanf("%d",&option);	// read option from user
+		// read option from user
+		scanf("%d",&option);
 		cleanBuffer();
 		switch(option)
 		{

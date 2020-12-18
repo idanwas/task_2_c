@@ -26,10 +26,10 @@ int initAirport(Airport* pAirport)
 	pAirport->country = readString("Please enter country name: ");
 
 	// read airport's IATA code from user until IATA code is legal
-	strcpy(pAirport->IATA, getStrExactLength("Please enter IATA code: "));
+	strcpy(pAirport->IATA, readString("Please enter IATA code: "));
 	while (!isLegalCode(pAirport->IATA))
 	{
-		strcpy(pAirport->IATA, getStrExactLength("Please enter IATA code: "));
+		strcpy(pAirport->IATA, readString("Please enter IATA code: "));
 	}
 
 	return 1;
